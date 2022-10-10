@@ -21,14 +21,16 @@ window.addEventListener('load', (event) => {
     })
     socket.addEventListener('close', () => {
         clearInterval(interval)
-        // let reload = confirm(' Socket connection failed,do you want to reload?')
-        // if (reload){
-        //     window.location.reload()
-        // }
+        let reload = confirm(' Socket connection failed,do you want to reload?')
+        if (reload){
+            window.location.reload()
+        }
     });
 
     interval = setInterval(function(){
-        socket.send("query");
+        if (socket.readyState == 1){
+            socket.send("query");
+        }
     }, 50);
   });
 

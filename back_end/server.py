@@ -6,7 +6,7 @@ import time
 
 speed = 40
 distance = 0
-fc.start_speed_thread()
+fc.start_speed_thread() #start the speed recording thread
 
 async def handler(websocket):
     global speed,distance
@@ -37,6 +37,6 @@ async def handler(websocket):
 
 async def main():
     async with websockets.serve(handler,"172.16.109.23",8564):
-        await asyncio.Future()
+        await asyncio.Future() # run forever
 
 asyncio.run(main())
